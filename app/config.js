@@ -1,1 +1,3 @@
-export const SITE_VERSION = "2.0.2";
+import packageInfo from "../package.json";
+
+export const SITE_VERSION = packageInfo.version;
