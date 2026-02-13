@@ -1,8 +1,16 @@
+"use client";
+
 import { useLocale } from "next-intl";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function ProfileImage({ onClick, refProp, isMobile }) {
   const locale = useLocale();
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/images/Matin-Taherzadeh-portrait-large.webp";
+  }, []);
 
   return (
     <div className="relative" onClick={onClick}>
