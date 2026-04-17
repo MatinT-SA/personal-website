@@ -1,5 +1,19 @@
 export const getJobData = (t) => [
   {
+    id: 6,
+    date: t("arnavision.date"),
+    title: t("arnavision.title"),
+    company: t("arnavision.company"),
+    iconBg: "#4f46e5",
+    iconUrl: "/images/experience/arnavision.svg",
+    points: [
+      t("arnavision.points.1"),
+      t("arnavision.points.2"),
+      t("arnavision.points.3"),
+      t("arnavision.points.4"),
+    ],
+  },
+  {
     id: 5,
     date: t("freelance.date"),
     title: t("freelance.title"),

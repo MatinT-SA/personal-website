@@ -72,6 +72,17 @@
         "2": "Used a wide range of technologies including ASP.NET MVC & Core, ReactJS, MERN Stack, JavaScript, TailwindCSS, Bootstrap, and ThreeJS.",
         "3": "Delivered custom, high-quality solutions for client needs in the freelance community."
       }
+    },
+    "arnavision": {
+      "date": "May 2026 – Present",
+      "title": "Front-End Developer",
+      "company": "Arnavision",
+      "points": {
+        "1": "Converted Figma designs into responsive, accessible, and user-friendly front-end interfaces.",
+        "2": "Developed and maintained modern UI components using HTML, Sass, JavaScript, Bootstrap, and Tailwind CSS.",
+        "3": "Collaborated closely with designers and developers to deliver clean, maintainable, and responsive web experiences.",
+        "4": "Contributed to front-end implementation and UI development across multiple web projects and client solutions."
+      }
     }
   },
   "home": {
