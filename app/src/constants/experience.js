@@ -4,7 +4,7 @@ export const getJobData = (t) => [
     date: t("arnavision.date"),
     title: t("arnavision.title"),
     company: t("arnavision.company"),
-    iconBg: "#4f46e5",
+    iconBg: "#d8c7e8",
     iconUrl: "/images/experience/arnavision.svg",
     points: [
       t("arnavision.points.1"),
