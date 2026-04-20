@@ -17,7 +17,6 @@ export const getJobData = (t) => [
     id: 5,
     date: t("freelance.date"),
     title: t("freelance.title"),
-    company: t("freelance.company"),
     iconBg: "#9e8895",
     iconUrl: "/images/experience/matintaherzadeh.png",
     points: [
