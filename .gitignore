@@ -37,3 +37,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code
+/.claudeignore
+/CLAUDE.md
+
+# Personal VS Code settings
+/.vscode/settings.json
