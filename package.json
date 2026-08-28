@@ -6,7 +6,8 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "@tailwindcss/cli": "^4.1.11",
@@ -29,11 +30,16 @@
     "devDependencies": {
         "@eslint/eslintrc": "^3",
         "@tailwindcss/postcss": "^4.1.11",
+        "@types/node": "22",
+        "@types/nodemailer": "^8.0.2",
+        "@types/react": "19",
+        "@types/react-dom": "19",
         "autoprefixer": "^10.4.21",
         "concurrently": "^9.2.1",
         "eslint": "^9",
         "eslint-config-next": "15.4.4",
         "postcss": "^8.5.6",
-        "tailwindcss": "^4.1.11"
+        "tailwindcss": "^4.1.11",
+        "typescript": "6"
     }
 }

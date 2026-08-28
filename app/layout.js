@@ -7,15 +7,15 @@ export const viewport = {
   themeColor: THEME_COLOR,
 };
 
-export default function LocaleLayout({ children, params: { locale } }) {
+export default function LocaleLayout({ children }) {
   return (
-    <html lang={locale}>
+    <html>
       <body
         className="antialiased
           bg-linear-to-r from-white to-[#ffe6ff]
           overflow-x-hidden text-black font-shabnam"
       >
-        <Header locale={locale} />
+        <Header />
         {children}
         <SpeedInsights />
       </body>

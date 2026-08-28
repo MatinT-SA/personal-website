@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import ExperiencePageClient from "./ExperiencePageClient";
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "seo.experience" });
 
   return {
