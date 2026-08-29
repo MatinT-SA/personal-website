@@ -1,10 +1,10 @@
 /**
  * Helper to format a date string (YYYY-MM-DD) into a human-readable format
  * with day suffixes (e.g., "Wednesday, November 26th 2025").
- * @param {string} dateString - The date string in "YYYY-MM-DD" format.
- * @returns {string | null} The formatted date string or null if input is invalid.
+ * @param dateString - The date string in "YYYY-MM-DD" format.
+ * @returns The formatted date string, or null if the input is empty or invalid.
  */
-export const formatDate = (dateString) => {
+export const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null;
   const date = new Date(dateString);
 
@@ -12,7 +12,7 @@ export const formatDate = (dateString) => {
     return null;
   }
 
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     weekday: "long",
     year: "numeric",
     month: "long",
