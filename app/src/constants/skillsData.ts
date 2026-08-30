@@ -1,4 +1,6 @@
-export const getSkillsData = (t) => {
+type Translator = (key: string) => string;
+
+export const getSkillsData = (t: Translator) => {
   const skillKeysLeft = [
     "csharp",
     "tailwind",
@@ -42,7 +44,6 @@ export const getSkillsData = (t) => {
     github: "Other",
     seo: "Other",
     restapi: "Backend",
-
     javascript: "Frontend",
     html: "Frontend",
     react: "Frontend",

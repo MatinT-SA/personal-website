@@ -11,7 +11,9 @@ import {
   FaFacebookF,
 } from "react-icons/fa";
 
-export const getContactData = (t) => {
+type Translator = (key: string) => string;
+
+export const getContactData = (t: Translator) => {
   const CONTACT_INFO = [
     {
       icon: FaMapMarkerAlt,
