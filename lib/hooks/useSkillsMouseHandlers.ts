@@ -1,16 +1,18 @@
 import { useCallback } from "react";
+import type { MutableRefObject, MouseEvent as ReactMouseEvent } from "react";
+import type { SkillsGlowUtils } from "./useSkillsGlow";
 
 export function useSkillsMouseHandlers(
-  containerRef,
-  itemRefs,
-  isTouchDevice,
-  selectedCategory,
-  showAll,
-  tick,
-  glowUtils
+  containerRef: MutableRefObject<HTMLElement | null>,
+  itemRefs: MutableRefObject<(HTMLElement | null)[]>,
+  isTouchDevice: boolean,
+  selectedCategory: string | null,
+  showAll: boolean,
+  tick: () => void,
+  glowUtils: SkillsGlowUtils
 ) {
   const handleMouseMove = useCallback(
-    (e) => {
+    (e: ReactMouseEvent<HTMLElement>) => {
       if (isTouchDevice) return;
       const cont = containerRef.current;
       if (!cont) return;

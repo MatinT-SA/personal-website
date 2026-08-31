@@ -1,15 +1,29 @@
 import { useEffect, useRef, useState, useMemo } from "react";
+import type { MutableRefObject } from "react";
+
+const SECTION_IDS = [
+  "home",
+  "about-me",
+  "skills",
+  "projects",
+  "entrepreneur",
+  "contact",
+  "comment",
+] as const;
+
+type SectionId = (typeof SECTION_IDS)[number];
+type SectionRefs = Record<SectionId, MutableRefObject<HTMLElement | null>>;
 
 export default function useSectionObserver() {
-  const homeRef = useRef(null);
-  const aboutMeRef = useRef(null);
-  const skillsRef = useRef(null);
-  const projectsRef = useRef(null);
-  const entrepreneurRef = useRef(null);
-  const contactRef = useRef(null);
-  const commentRef = useRef(null);
+  const homeRef = useRef<HTMLElement | null>(null);
+  const aboutMeRef = useRef<HTMLElement | null>(null);
+  const skillsRef = useRef<HTMLElement | null>(null);
+  const projectsRef = useRef<HTMLElement | null>(null);
+  const entrepreneurRef = useRef<HTMLElement | null>(null);
+  const contactRef = useRef<HTMLElement | null>(null);
+  const commentRef = useRef<HTMLElement | null>(null);
 
-  const allRefs = useMemo(
+  const allRefs = useMemo<SectionRefs>(
     () => ({
       home: homeRef,
       "about-me": aboutMeRef,
@@ -22,14 +36,15 @@ export default function useSectionObserver() {
     []
   );
 
-  const [activeSectionId, setActiveSectionId] = useState(null);
+  const [activeSectionId, setActiveSectionId] = useState<SectionId | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      let currentSectionId = null;
+      let currentSectionId: SectionId | null = null;
       const scrollPosition = window.scrollY + 150;
 
-      for (const [id, ref] of Object.entries(allRefs)) {
+      for (const id of SECTION_IDS) {
+        const ref = allRefs[id];
         if (ref.current) {
           const rect = ref.current.getBoundingClientRect();
           const sectionTop = rect.top + window.scrollY;

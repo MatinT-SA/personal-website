@@ -3,9 +3,9 @@
 import { useState, useCallback } from "react";
 
 export function useQuoteCard() {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
-  const handleMouseEnter = useCallback((id) => {
+  const handleMouseEnter = useCallback((id: string) => {
     setHoveredCard(id);
   }, []);
 
@@ -13,7 +13,7 @@ export function useQuoteCard() {
     setHoveredCard(null);
   }, []);
 
-  const isHovered = useCallback((id) => hoveredCard === id, [hoveredCard]);
+  const isHovered = useCallback((id: string) => hoveredCard === id, [hoveredCard]);
 
   return {
     hoveredCard,

@@ -1,49 +1,57 @@
 import { useState, useCallback } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import toast from "react-hot-toast";
 
-/**
- * Custom hook for managing comment form state and submission logic.
- * Handles form validation, API submission, error handling, and success notifications.
- *
- * @param {Object} config - Configuration object
- * @param {Function} config.t - Translation function from useTranslations hook
- * @returns {Object} Form state and handlers
- *   @returns {Object} formData - Current form values (name, familyname, email, phonenumber, CommentMessage)
- *   @returns {Function} handleInputChange - Input change handler
- *   @returns {Function} handleSubmit - Form submission handler
- *   @returns {boolean} isSubmitting - Current submission state
- */
-export function useCommentForm({ t }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    familyname: "",
-    email: "",
-    phonenumber: "",
-    CommentMessage: "",
-  });
+interface CommentFormData {
+  name: string;
+  familyname: string;
+  email: string;
+  phonenumber: string;
+  CommentMessage: string;
+}
+
+type CommentTranslationKey =
+  | "success_message"
+  | "error_message"
+  | "error_message2";
+type CommentTranslator = (key: CommentTranslationKey) => string;
+
+const createInitialFormData = (): CommentFormData => ({
+  name: "",
+  familyname: "",
+  email: "",
+  phonenumber: "",
+  CommentMessage: "",
+});
+
+interface UseCommentFormOptions {
+  t: CommentTranslator;
+}
+
+export function useCommentForm({ t }: UseCommentFormOptions) {
+  const [formData, setFormData] = useState<CommentFormData>(
+    createInitialFormData
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }, []);
+  const handleInputChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    },
+    []
+  );
 
   const resetForm = useCallback(() => {
-    setFormData({
-      name: "",
-      familyname: "",
-      email: "",
-      phonenumber: "",
-      CommentMessage: "",
-    });
+    setFormData(createInitialFormData());
   }, []);
 
   const handleSubmit = useCallback(
-    async (e) => {
-      const form = e.target;
+    async (e: FormEvent<HTMLFormElement>) => {
+      const form = e.currentTarget;
 
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -69,7 +77,7 @@ export function useCommentForm({ t }) {
           });
           resetForm();
         } else {
-          const errorData = await response.json();
+          const errorData: { message?: string } = await response.json();
           const errorMessage = errorData.message || t("error_message");
           toast.error(errorMessage, {
             duration: 3000,
@@ -77,7 +85,7 @@ export function useCommentForm({ t }) {
           });
           console.error("API response error:", errorData);
         }
-      } catch (error) {
+      } catch (error: unknown) {
         toast.error(t("error_message2"), {
           duration: 4000,
           position: "bottom-right",

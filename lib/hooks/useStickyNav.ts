@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import type { RefObject } from "react";
 
-export default function useStickyNav(navRef) {
+export default function useStickyNav(navRef: RefObject<HTMLElement | null>) {
   const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function useStickyNav(navRef) {
       const scrollY = window.scrollY || window.pageYOffset;
 
       if (!currentNav) return;
-      const nextEl = currentNav.nextElementSibling;
+      const nextEl = currentNav.nextElementSibling as HTMLElement | null;
 
       if (scrollY > headerHeight) {
         setIsFixed(true);
@@ -31,9 +32,8 @@ export default function useStickyNav(navRef) {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
 
-      if (currentNav?.nextElementSibling) {
-        currentNav.nextElementSibling.style.paddingTop = "";
-      }
+      const nextEl = currentNav?.nextElementSibling as HTMLElement | null | undefined;
+      if (nextEl) nextEl.style.paddingTop = "";
     };
   }, [navRef]);
 

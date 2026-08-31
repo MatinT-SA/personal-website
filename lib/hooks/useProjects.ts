@@ -1,20 +1,27 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
-export function useProjects(projects = [], initialVisibleProjects = 5) {
+interface ProjectItem {
+  id: string;
+}
+
+export function useProjects<T extends ProjectItem>(
+  projects: T[] = [],
+  initialVisibleProjects = 5
+) {
   const PROJECTS = projects;
 
   const [mounted, setMounted] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
-  const [activeProjectId, setActiveProjectId] = useState(null);
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const [containerWidth, setContainerWidth] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
   const [visibleProjects, setVisibleProjects] = useState(
     initialVisibleProjects
   );
 
-  const containerRef = useRef(null);
-  const tooltipTimerRef = useRef(null);
-  const slidingTimerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tooltipTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const slidingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const calculateVisibleProjects = useCallback(() => {
     if (typeof window === "undefined") return initialVisibleProjects;
@@ -46,7 +53,9 @@ export function useProjects(projects = [], initialVisibleProjects = 5) {
     setStartIndex((prevIndex) =>
       Math.min(prevIndex + 1, PROJECTS.length - visibleProjects)
     );
-    clearTimeout(slidingTimerRef.current);
+    if (slidingTimerRef.current !== null) {
+      clearTimeout(slidingTimerRef.current);
+    }
     slidingTimerRef.current = setTimeout(() => {
       setIsSliding(false);
     }, 500);
@@ -55,17 +64,19 @@ export function useProjects(projects = [], initialVisibleProjects = 5) {
   const handlePrev = useCallback(() => {
     setIsSliding(true);
     setStartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    clearTimeout(slidingTimerRef.current);
+    if (slidingTimerRef.current !== null) {
+      clearTimeout(slidingTimerRef.current);
+    }
     slidingTimerRef.current = setTimeout(() => {
       setIsSliding(false);
     }, 500);
   }, []);
 
-  const handleAccordionToggle = useCallback((projectId) => {
+  const handleAccordionToggle = useCallback((projectId: string) => {
     setActiveProjectId((prev) => (prev === projectId ? null : projectId));
   }, []);
 
-  const registerContainer = useCallback((el) => {
+  const registerContainer = useCallback((el: HTMLDivElement | null) => {
     containerRef.current = el;
   }, []);
 
@@ -84,7 +95,6 @@ export function useProjects(projects = [], initialVisibleProjects = 5) {
     handleAccordionToggle,
     tooltipTimerRef,
     slidingTimerRef,
-    visibleProjects,
     visibleProjects: mounted ? visibleProjects : initialVisibleProjects,
     mounted,
   };

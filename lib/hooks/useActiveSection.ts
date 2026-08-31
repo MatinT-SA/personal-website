@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
 export default function useActiveSection() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll("section[id]"));
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[id]")
+    );
     if (!sections.length) return;
 
     const onScroll = () => {
@@ -24,5 +26,5 @@ export default function useActiveSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return [activeSection, setActiveSection];
+  return [activeSection, setActiveSection] as const;
 }
