@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 
 export default function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>("home");
+    const [activeSection, setActiveSection] = useState<string>("home");
 
-  useEffect(() => {
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("section[id]")
-    );
-    if (!sections.length) return;
-
-    const onScroll = () => {
-      const current = sections.find((section) => {
-        const rect = section.getBoundingClientRect();
-        return (
-          rect.top <= window.innerHeight / 2 &&
-          rect.bottom > window.innerHeight / 2
+    useEffect(() => {
+        const sections = Array.from(
+            document.querySelectorAll<HTMLElement>("section[id]"),
         );
-      });
-      if (current) setActiveSection(current.id);
-    };
+        if (!sections.length) return;
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+        const onScroll = () => {
+            const current = sections.find((section) => {
+                const rect = section.getBoundingClientRect();
+                return (
+                    rect.top <= window.innerHeight / 2 &&
+                    rect.bottom > window.innerHeight / 2
+                );
+            });
+            if (current) setActiveSection(current.id);
+        };
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
 
-  return [activeSection, setActiveSection] as const;
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    return [activeSection, setActiveSection] as const;
 }
