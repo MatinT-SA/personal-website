@@ -1,7 +1,7 @@
 "use client";
 
 import { CommentForm } from "@/app/components/comment/CommentForm.js";
-import { CommentHeader } from "@/app/components/comment/CommentHeader.js";
+import { CommentHeader } from "@/app/components/comment/CommentHeader";
 import { useCommentForm } from "@/lib/hooks/useCommentForm";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";

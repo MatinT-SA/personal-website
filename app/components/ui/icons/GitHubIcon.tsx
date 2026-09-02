@@ -1,8 +1,6 @@
-import React from "react";
-
 export default function GitHubIcon() {
   return (
-    <div className={`p-2 mx-3 rounded-full bg-white/10 text-white/90`}>
+    <div className="p-2 mx-3 rounded-full bg-white/10 text-white/90">
       <svg
         className="w-5 h-5"
         viewBox="0 0 24 24"

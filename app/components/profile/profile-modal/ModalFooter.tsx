@@ -1,7 +1,12 @@
+import type { MouseEventHandler } from "react";
 import { useTranslations } from "next-intl";
-import React from "react";
 
-export default function ModalFooter({ onClose, closing }) {
+type ModalFooterProps = {
+  onClose: MouseEventHandler<HTMLButtonElement>;
+  closing: boolean;
+};
+
+export default function ModalFooter({ onClose, closing }: ModalFooterProps) {
   const t = useTranslations("profile");
 
   return (

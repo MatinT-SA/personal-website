@@ -14,7 +14,7 @@ export default function ResumeDownloadButton() {
   const downloadApiPath = `/api/resume?locale=${locale}`;
   const downloadFileName = `Matin Taherzadeh Resume - ${locale.toUpperCase()}.pdf`;
 
-  const handleDownloadClick = async () => {
+  const handleDownloadClick = async (): Promise<void> => {
     if (isDownloading) return;
 
     setIsDownloading(true);
@@ -40,7 +40,7 @@ export default function ResumeDownloadButton() {
       window.URL.revokeObjectURL(url);
 
       toast.success(t("download_success"));
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Resume download failed:", error);
       toast.error(t("download_error"));
     } finally {

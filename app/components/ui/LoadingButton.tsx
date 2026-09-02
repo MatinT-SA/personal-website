@@ -1,6 +1,16 @@
-"use client";
-
+import type { MouseEventHandler, ReactNode } from "react";
 import LoadingSpinner from "./icons/LoadingSpinner";
+
+type LoadingButtonProps = {
+  isLoading: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  children: ReactNode;
+  loadingText?: string;
+  icon?: ReactNode;
+  spinnerSize?: string;
+  className?: string;
+  disabled?: boolean;
+};
 
 export default function LoadingButton({
   isLoading,
@@ -11,7 +21,7 @@ export default function LoadingButton({
   spinnerSize = "h-5 w-5",
   className = "",
   disabled = false,
-}) {
+}: LoadingButtonProps) {
   const isDisabled = disabled || isLoading;
 
   return (

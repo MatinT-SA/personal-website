@@ -1,7 +1,11 @@
-import React from "react";
+import type { MouseEventHandler } from "react";
 import { FaBars } from "react-icons/fa";
 
-export default function HamburgerButton({ openMenu }) {
+type HamburgerButtonProps = {
+  openMenu: MouseEventHandler<HTMLButtonElement>;
+};
+
+export default function HamburgerButton({ openMenu }: HamburgerButtonProps) {
   return (
     <button
       type="button"

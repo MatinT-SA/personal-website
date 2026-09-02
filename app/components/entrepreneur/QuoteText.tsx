@@ -1,8 +1,11 @@
-"use client";
-
 import { motion } from "framer-motion";
 
-export default function QuoteText({ quote, isHovered }) {
+type QuoteTextProps = {
+  quote: { quote: string };
+  isHovered: boolean;
+};
+
+export default function QuoteText({ quote, isHovered }: QuoteTextProps) {
   return (
     <motion.div
       className="p-5 box-border text-white text-center leading-loose text-lg z-10 pointer-events-none"

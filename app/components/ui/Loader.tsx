@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 export default function Loader() {
   const dots = Array.from({ length: 9 }, (_, i) => i);
 

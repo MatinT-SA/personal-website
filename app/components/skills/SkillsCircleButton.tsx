@@ -1,6 +1,14 @@
-"use client";
+import type { MouseEventHandler } from "react";
 
-export default function SkillsCircleButton({ showAll, toggleShowAll }) {
+type SkillsCircleButtonProps = {
+  showAll: boolean;
+  toggleShowAll: MouseEventHandler<HTMLDivElement>;
+};
+
+export default function SkillsCircleButton({
+  showAll,
+  toggleShowAll,
+}: SkillsCircleButtonProps) {
   return (
     <div
       onClick={toggleShowAll}

@@ -1,7 +1,12 @@
-import React from "react";
+import type { MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 
-export default function ModalHeader({ onClose, closing }) {
+type ModalHeaderProps = {
+  onClose: MouseEventHandler<HTMLButtonElement>;
+  closing: boolean;
+};
+
+export default function ModalHeader({ onClose, closing }: ModalHeaderProps) {
   return (
     <div
       className="grid grid-cols-[1fr_auto] sm:flex items-center justify-between px-2 sm:px-6 py-4"
@@ -16,7 +21,7 @@ export default function ModalHeader({ onClose, closing }) {
       </h4>
       <button
         type="button"
-        className={`hidden rounded-full ml-1 sm:ml-3 bg-white/80 hover:bg-red-400 hover:text-white p-1 sm:p-2 transition cursor-pointer sm:flex items-center justify-center`}
+        className="hidden rounded-full ml-1 sm:ml-3 bg-white/80 hover:bg-red-400 hover:text-white p-1 sm:p-2 transition cursor-pointer sm:flex items-center justify-center"
         aria-label="Close"
         onClick={!closing ? onClose : undefined}
       >

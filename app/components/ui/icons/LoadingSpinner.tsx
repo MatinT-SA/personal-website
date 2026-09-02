@@ -1,7 +1,12 @@
+type LoadingSpinnerProps = {
+  size?: string;
+  color?: string;
+};
+
 export default function LoadingSpinner({
   size = "h-5 w-5",
   color = "text-white",
-}) {
+}: LoadingSpinnerProps) {
   return (
     <svg
       className={`animate-spin ${size} ${color}`}

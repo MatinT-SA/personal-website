@@ -1,4 +1,12 @@
-import React from "react";
+import type { MouseEventHandler, ReactNode } from "react";
+
+type CloseButtonProps = {
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  ariaLabel?: string;
+  className?: string;
+  children?: ReactNode;
+  disabled?: boolean;
+};
 
 export default function CloseButton({
   onClick,
@@ -6,7 +14,7 @@ export default function CloseButton({
   className = "",
   children,
   disabled = false,
-}) {
+}: CloseButtonProps) {
   return (
     <button
       type="button"

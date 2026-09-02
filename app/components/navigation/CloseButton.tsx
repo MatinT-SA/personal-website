@@ -1,7 +1,11 @@
-import React from "react";
+import type { MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 
-export default function CloseButton({ closeMenu }) {
+type CloseButtonProps = {
+  closeMenu: MouseEventHandler<HTMLButtonElement>;
+};
+
+export default function CloseButton({ closeMenu }: CloseButtonProps) {
   return (
     <button
       type="button"

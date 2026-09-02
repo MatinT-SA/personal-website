@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { CommentFields } from "./CommentFields.js";
-import { LiquidButton } from "./LiquidButton.js";
+import { LiquidButton } from "./LiquidButton";
 import { getCommentFormFields } from "./commentFormConfig.js";
 
 /**
