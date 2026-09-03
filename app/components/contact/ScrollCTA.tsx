@@ -1,8 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { MouseEventHandler } from "react";
 
-export default function ScrollCTA({ cta, onScroll }) {
+type ScrollCTAProps = {
+  cta: string;
+  onScroll: MouseEventHandler<HTMLDivElement>;
+};
+
+export default function ScrollCTA({ cta, onScroll }: ScrollCTAProps) {
   return (
     <div className="flex flex-col items-center justify-center my-12">
       <motion.p

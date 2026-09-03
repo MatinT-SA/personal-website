@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 
-export default function ContactCard({ icon: Icon, title, value, href }) {
-  const isLink = href && href !== "#";
+type ContactCardProps = {
+  icon: IconType;
+  title: string;
+  value: string;
+  href?: string;
+};
+
+export default function ContactCard({
+  icon: Icon,
+  title,
+  value,
+  href,
+}: ContactCardProps) {
+  const isLink = Boolean(href && href !== "#");
 
   return (
     <motion.div

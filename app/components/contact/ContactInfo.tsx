@@ -1,6 +1,18 @@
+import type { IconType } from "react-icons";
 import ContactCard from "./ContactCard";
 
-export default function ContactInfo({ contactInfo }) {
+type ContactInfoItem = {
+  icon: IconType;
+  title: string;
+  value: string;
+  href?: string;
+};
+
+type ContactInfoProps = {
+  contactInfo: ContactInfoItem[];
+};
+
+export default function ContactInfo({ contactInfo }: ContactInfoProps) {
   return (
     <div className="flex justify-center flex-wrap lg:gap-y-12 gap-x-12">
       {contactInfo.map((item, index) => (
