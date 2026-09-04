@@ -6,9 +6,11 @@ import { useTranslations } from "use-intl";
 
 export default function TypedHeading() {
   const t = useTranslations("AboutMe");
-  const el = useRef(null);
+  const el = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!el.current) return;
+
     const typed = new Typed(el.current, {
       strings: [t("heading1"), t("heading2"), t("heading3")],
       typeSpeed: 40,
