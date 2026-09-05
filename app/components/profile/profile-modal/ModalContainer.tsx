@@ -3,7 +3,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 type ModalContainerProps = {
   show: boolean;
   closing: boolean;
-  onClick: MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   children: ReactNode;
 };
 
