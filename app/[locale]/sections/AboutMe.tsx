@@ -1,6 +1,9 @@
+import type { ComponentProps } from "react";
 import AboutMeImageGraphWrapper from "@/app/components/about-me/AboutMeImageGraphWrapper";
 
-export default function AboutMeSection({ githubData }) {
+type AboutMeSectionProps = ComponentProps<typeof AboutMeImageGraphWrapper>;
+
+export default function AboutMeSection() {
     return (
         <>
             <AboutMeImageGraphWrapper />
