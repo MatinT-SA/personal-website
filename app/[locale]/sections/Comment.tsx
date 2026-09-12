@@ -1,10 +1,10 @@
 "use client";
 
+import { useMemo } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { CommentForm } from "@/app/components/comment/CommentForm";
 import { CommentHeader } from "@/app/components/comment/CommentHeader";
 import { useCommentForm } from "@/lib/hooks/useCommentForm";
-import { useLocale, useTranslations } from "next-intl";
-import { useMemo } from "react";
 
 export default function Comment() {
     const t = useTranslations("comment");
