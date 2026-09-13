@@ -7,9 +7,9 @@ import { getContactData } from "@/app/src/constants/contactData";
 import { useContactScroll } from "@/lib/hooks/useContactScroll";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 
-export default function Contact() {
+const Contact = forwardRef<HTMLElement>(function Contact(_props, ref) {
     const t = useTranslations("contact");
 
     const { CONTACT_INFO, SOCIAL_LINKS } = useMemo(
@@ -20,7 +20,7 @@ export default function Contact() {
     const { handleScrollToComment } = useContactScroll();
 
     return (
-        <section id="contact" className="pt-12 mt-8 scroll-mt-20">
+        <section id="contact" ref={ref} className="pt-12 mt-8 scroll-mt-20">
             <div className="container mx-auto px-4">
                 <motion.h2
                     className="text-center text-3xl font-bold mb-4 lg:mb-12 text-purple-primary"
@@ -40,4 +40,6 @@ export default function Contact() {
             </div>
         </section>
     );
-}
+});
+
+export default Contact;

@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { CommentForm } from "@/app/components/comment/CommentForm";
 import { CommentHeader } from "@/app/components/comment/CommentHeader";
 import { useCommentForm } from "@/lib/hooks/useCommentForm";
 
-export default function Comment() {
+const Comment = forwardRef<HTMLElement>(function Comment(_props, ref) {
     const t = useTranslations("comment");
     const locale = useLocale();
     const isRTL = useMemo(() => locale === "fa", [locale]);
@@ -17,6 +17,7 @@ export default function Comment() {
 
     return (
         <section
+            ref={ref}
             id="comment"
             className="py-15 scroll-mt-20 h-full bg-purple-primary font-inter"
         >
@@ -33,4 +34,6 @@ export default function Comment() {
             </div>
         </section>
     );
-}
+});
+
+export default Comment;

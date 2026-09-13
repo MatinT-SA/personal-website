@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+    forwardRef,
+    useCallback,
+    useEffect,
+    useImperativeHandle,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 import type { SkillPosition } from "@/lib/hooks/useSkillsGlow";
 import SkillsList from "@/app/components/skills/SkillsList";
 import SkillsGlowCursor from "@/app/components/skills/SkillsGlowCursor";
@@ -10,8 +18,9 @@ import { getSkillsData } from "@/app/src/constants/skillsData";
 import { useSkillsGlow } from "@/lib/hooks/useSkillsGlow";
 import { useSkillsMouseHandlers } from "@/lib/hooks/useSkillsMouseHandlers";
 
-export default function Skills() {
+const Skills = forwardRef<HTMLElement>(function Skills(_props, ref) {
     const containerRef = useRef<HTMLElement | null>(null);
+    useImperativeHandle(ref, () => containerRef.current as HTMLElement);
     const itemRefs = useRef<(HTMLElement | null)[]>([]);
     const positions = useRef<(SkillPosition | null)[]>([]);
 
@@ -30,7 +39,9 @@ export default function Skills() {
         typeof window !== "undefined" &&
         ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(
+        null,
+    );
     const [showAll, setShowAll] = useState(false);
 
     const computePositions = useCallback(() => {
@@ -70,9 +81,12 @@ export default function Skills() {
             glowUtils,
         );
 
-    const registerItem = useCallback((index: number, element: HTMLLIElement) => {
-        itemRefs.current[index] = element;
-    }, []);
+    const registerItem = useCallback(
+        (index: number, element: HTMLLIElement) => {
+            itemRefs.current[index] = element;
+        },
+        [],
+    );
 
     const handleSliceClick = useCallback((categoryName: string) => {
         setSelectedCategory((prevCategory) =>
@@ -147,4 +161,6 @@ export default function Skills() {
             {!isTouchDevice && <SkillsGlowCursor />}
         </section>
     );
-}
+});
+
+export default Skills;

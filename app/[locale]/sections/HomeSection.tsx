@@ -1,11 +1,14 @@
+import { forwardRef } from "react";
 import ProfileCard from "@app/components/profile/profile-card/ProfileCard";
 import Navigation from "../Navigation";
 
-export default function HomeSection() {
+const HomeSection = forwardRef<HTMLElement>(function HomeSection(_props, ref) {
     return (
-        <section className="w-full">
+        <section ref={ref} className="w-full">
             <Navigation />
             <ProfileCard />
         </section>
     );
-}
+});
+
+export default HomeSection;
