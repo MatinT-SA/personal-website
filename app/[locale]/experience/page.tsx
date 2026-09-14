@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+import ExperiencePageClient from "./ExperiencePageClient";
+
+interface ExperiencePageProps {
+    params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+    params,
+}: ExperiencePageProps): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "seo.experience" });
+
+    return {
+        title: t("title"),
+        description: t("description"),
+        alternates: {
+            canonical: `https://matintaherzadeh.com/${locale}/experience`,
+            languages: {
+                fa: "https://matintaherzadeh.com/fa/experience",
+                en: "https://matintaherzadeh.com/en/experience",
+                "x-default": "https://matintaherzadeh.com/fa/experience",
+            },
+        },
+    };
+}
+
+export default function ExperiencePage() {
+    return <ExperiencePageClient />;
+}
