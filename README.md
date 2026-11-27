@@ -1,4 +1,4 @@
-# Matin Taherzadeh | Personal Website V2
+# Matin Taherzadeh | Personal Website V3
 
 <img width="1920" height="921" alt="personal-website" src="https://github.com/user-attachments/assets/9d8752ce-a01b-4eed-90cc-8bed82e70925" />
 
@@ -6,21 +6,22 @@
 
 ## 📝 Description
 
-This is the **second generation** of my professional portfolio. It represents a complete shift from legacy web technologies to a modern, component-driven architecture. This refactor focuses on **maximum performance**, **internationalization (i18n)**, and a refined **UI/UX**.
+This is the third generation of my professional portfolio. Building upon the previous architecture, this version introduces a complete migration from JavaScript to TypeScript, with further improvements to code quality, maintainability, and overall performance.
 
 > [!IMPORTANT]
-> **Branch Evolution:** The legacy version of this site (HTML/CSS/Bootstrap 3) is officially archived in the `v1` branch. The current production-ready code resides in the `main` branch.
+> **Branch Evolution:** Previous versions of this site are preserved in their respective branches: V1 (HTML/CSS/Bootstrap 3) and V2 (JavaScript/Next.js). The current production-ready code resides in the main branch.
 
 ## 🔗 Quick Links
 
 - 🚀 **Live Demo:** [matintaherzadeh.ir](https://matintaherzadeh.ir)
-- 📂 **Legacy Version:** [View v1 Branch](https://github.com/MatinT-SA/My-Personal-Website/tree/v1)
+- 📂 **Previous Version:** [View v2 Branch](https://github.com/MatinT-SA/My-Personal-Website/tree/v2)
+- 📂 **Original Version:** [View v1 Branch](https://github.com/MatinT-SA/My-Personal-Website/tree/v1)
 
 ---
 
 ## 🚀 Setup
 
-While the project is live, you can run it locally for development:
+The website is already live at [matintaherzadeh.ir](https://matintaherzadeh.ir). If you'd like to explore the source code or run the project locally, follow these steps:
 
 ```bash
 # Clone the repository
@@ -39,6 +40,7 @@ npm run dev
 **Core Framework:**
 - [Next.js 15](https://nextjs.org/) (App Router)
 - [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Next-Intl](https://next-intl-docs.vercel.app/) (Full Multilingual Support)
 
 **UI & Styling:**
